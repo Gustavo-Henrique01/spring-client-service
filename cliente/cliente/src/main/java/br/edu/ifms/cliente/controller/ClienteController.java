@@ -15,9 +15,9 @@ public class ClienteController {
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Cliente>buscarCliente(@PathVariable Long codigo) throws Exception {
 
-	Cliente cliente = new Cliente(codigo, "cliente1", "000.000.000-01");
+	Cliente cliente = new Cliente(codigo, "cliente1");
 		
-		Thread.sleep(3000);
+		
 
 		return ResponseEntity.ok(cliente);
 	}

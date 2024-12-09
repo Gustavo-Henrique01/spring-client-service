@@ -4,13 +4,12 @@ public class Cliente {
 	
 	private Long id ;
 	private String nome;
-	private String cpf;
-	
-	public Cliente(Long id, String nome, String cpf) {
+
+	public Cliente(Long id, String nome) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.cpf = cpf;
+	
 	}
 	
 	public Cliente () {
@@ -33,12 +32,4 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
 }
