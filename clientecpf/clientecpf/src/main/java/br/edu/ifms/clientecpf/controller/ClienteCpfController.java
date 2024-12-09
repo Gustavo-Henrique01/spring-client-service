@@ -10,27 +10,16 @@ import br.edu.ifms.clientecpf.model.ClienteCPF;
 import br.edu.ifms.clientecpf.service.ClienteCpfService;
 
 @RestController
+
 public class ClienteCpfController {
-    
+
     @Autowired
     private ClienteCpfService clienteCpfService;
 
     @GetMapping("/cliente/{idCliente}/cpf")
     public ResponseEntity<ClienteCPF> buscarClienteComCPF(@PathVariable Long idCliente) {
-        try {
-          
-            ClienteCPF clienteCpf = clienteCpfService.buscarClienteComCPF(idCliente);
-          
-            if (clienteCpf != null) {
-                return ResponseEntity.ok(clienteCpf);
-            } else {
-               
-                return ResponseEntity.notFound().build();
-            }
-        } catch (Exception e) {
-
-
-            return ResponseEntity.status(500).body(null);
-        }
+        ClienteCPF clienteCPF = this.clienteCpfService.buscarClienteComCPF(idCliente).block();
+        return ResponseEntity.ok(clienteCPF);
     }
+
 }
