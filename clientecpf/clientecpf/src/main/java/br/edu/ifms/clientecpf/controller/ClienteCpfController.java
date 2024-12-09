@@ -11,24 +11,26 @@ import br.edu.ifms.clientecpf.service.ClienteCpfService;
 
 @RestController
 public class ClienteCpfController {
-	
-	
-	@Autowired
-	private ClienteCpfService clienteCpfService;
-	
-	 
+    
+    @Autowired
+    private ClienteCpfService clienteCpfService;
+
     @GetMapping("/cliente/{idCliente}/cpf")
     public ResponseEntity<ClienteCPF> buscarClienteComCPF(@PathVariable Long idCliente) {
-        
-        ClienteCPF clienteCpf = clienteCpfService.buscarClienteComCPF(idCliente);
-
-      
-        if (clienteCpf != null) {
-            
-            return ResponseEntity.ok(clienteCpf);
-        } else {
+        try {
           
-            return ResponseEntity.notFound().build();
+            ClienteCPF clienteCpf = clienteCpfService.buscarClienteComCPF(idCliente);
+          
+            if (clienteCpf != null) {
+                return ResponseEntity.ok(clienteCpf);
+            } else {
+               
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+
+
+            return ResponseEntity.status(500).body(null);
         }
     }
 }
