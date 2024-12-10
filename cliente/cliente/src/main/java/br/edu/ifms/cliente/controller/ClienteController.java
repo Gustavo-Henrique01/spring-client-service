@@ -27,7 +27,7 @@ public class ClienteController {
             return ResponseEntity.ok(cliente);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                                 .body(null);  // Ou uma mensagem personalizada
+                                 .body(null);  
         }
     }
 }

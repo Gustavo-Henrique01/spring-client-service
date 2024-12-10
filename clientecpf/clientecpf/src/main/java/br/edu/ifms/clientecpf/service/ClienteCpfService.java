@@ -18,7 +18,7 @@ public class ClienteCpfService {
     @Autowired
     private WebClient webClientCpf;
 
-    // Alterado para retornar Mono<ClienteCPF>
+   
     public Mono<ClienteCPF> buscarClienteComCPF(Long idCliente) {
 
         Mono<ClienteCPF> monoCliente = this.webClientCliente
@@ -33,7 +33,7 @@ public class ClienteCpfService {
             .retrieve()
             .bodyToMono(ClienteCPF.class);
 
-        // Usando Mono.zip para combinar as respostas
+     
         return Mono.zip(monoCliente, monoCPF)
             .map(tuple -> {
                 tuple.getT1().setCpf(tuple.getT2().getCpf());
