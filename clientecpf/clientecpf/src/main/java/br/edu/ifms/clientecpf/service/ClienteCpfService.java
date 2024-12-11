@@ -19,7 +19,7 @@ public class ClienteCpfService {
     private WebClient webClientCpf;
 
    
-    public Mono<ClienteCPF> buscarClienteComCPF(Long idCliente) {
+    public ClienteCPF buscarClienteComCPF(Long idCliente) {
 
         Mono<ClienteCPF> monoCliente = this.webClientCliente
             .method(HttpMethod.GET)
@@ -34,11 +34,14 @@ public class ClienteCpfService {
             .bodyToMono(ClienteCPF.class);
 
      
-        return Mono.zip(monoCliente, monoCPF)
-            .map(tuple -> {
-                tuple.getT1().setCpf(tuple.getT2().getCpf());
-                return tuple.getT1(); // Retorna o cliente com CPF
-            });
-    }
+        ClienteCPF clienteCpf = Mono.zip(monoCliente, monoCPF).map(tuple -> {
+			tuple.getT1().setCpf(tuple.getT2().getCpf());
+			return tuple.getT1();
+		}).block();
+
+		return clienteCpf;
+	}
+	
+    
 }
 

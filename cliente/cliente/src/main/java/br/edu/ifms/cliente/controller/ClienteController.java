@@ -20,7 +20,7 @@ public class ClienteController {
         if (codigo == 1) {
             cliente = new Cliente(codigo, "chaulin");
         } else if (codigo == 2) {
-            cliente = new Cliente(codigo, "flavindo do pneu pneu");
+            cliente = new Cliente(codigo, "flavinho do pneu");
         }
 
         if (cliente != null) {

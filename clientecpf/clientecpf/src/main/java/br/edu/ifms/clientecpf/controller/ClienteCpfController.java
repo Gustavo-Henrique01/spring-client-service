@@ -18,7 +18,7 @@ public class ClienteCpfController {
 
     @GetMapping("/cliente/{idCliente}/cpf")
     public ResponseEntity<ClienteCPF> buscarClienteComCPF(@PathVariable Long idCliente) {
-        ClienteCPF clienteCPF = this.clienteCpfService.buscarClienteComCPF(idCliente).block();
+        ClienteCPF clienteCPF = this.clienteCpfService.buscarClienteComCPF(idCliente);
         return ResponseEntity.ok(clienteCPF);
     }
 
